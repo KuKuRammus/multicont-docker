@@ -1,0 +1,33 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "kukurammus/mlt-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "api",
+            "image": "kukurammus/mlt-api",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "kukurammus/mlt-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "kukurammus/mlt-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                { "hostPort": 80, "containerPort": 80 }
+            ],
+            "links": ["client", "server"]
+        },
+    ]
+}
