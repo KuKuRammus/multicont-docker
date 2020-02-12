@@ -1,0 +1,20 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t kukurammus/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true kukurammus/react-test npm run test
+
+after_success:
+  - docker build -t kukurammus/mlt-client ./client
+  - docker build -t kukurammus/mlt-api ./api
+  - docker build -t kukurammus/mlt-nginx ./nginx
+  - docker build -t kukurammus/mlt-worker ./worker
+  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push kukurammus/mlt-client
+  - docker push kukurammus/mlt-api
+  - docker push kukurammus/mlt-nginx
+  - docker push kukurammus/mlt-worker
