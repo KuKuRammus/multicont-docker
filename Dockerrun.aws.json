@@ -5,19 +5,22 @@
             "name": "client",
             "image": "kukurammus/mlt-client",
             "hostname": "client",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "api",
             "image": "kukurammus/mlt-api",
             "hostname": "api",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "worker",
             "image": "kukurammus/mlt-worker",
             "hostname": "worker",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "nginx",
@@ -27,7 +30,8 @@
             "portMappings": [
                 { "hostPort": 80, "containerPort": 80 }
             ],
-            "links": ["client", "server"]
+            "links": ["client", "server"],
+            "memory": 128
         },
     ]
 }
