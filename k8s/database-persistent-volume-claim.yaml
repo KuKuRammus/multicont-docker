@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+
+metadata:
+  name: database-persistent-volume-claim
+spec:
+  # Access mode to the storage
+  accessModes:
+      # ReadWriteOnce - Can be used by a single node
+      # ReadOnlyMany - Multiple nodes can read from this
+      # ReadWriteMany - Can be read and written to by many nodes
+    - ReadWriteOnce
+
+  # Declare resources needed
+  resources:
+    requests:
+      # Request 2Gi of storage
+      storage: 2Gi
+    # Override `storageClassName` to select where k8s will take extra storage from
+    # storageClassName: default
