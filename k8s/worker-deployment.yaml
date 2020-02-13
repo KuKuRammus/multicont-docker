@@ -17,3 +17,10 @@ spec:
       containers:
         - name: worker
           image: kukurammus/mlt-worker
+          # Define enviroment variables
+          env:
+              # Non secret variables
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: "6379"

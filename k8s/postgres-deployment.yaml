@@ -35,3 +35,9 @@ spec:
               mountPath: /var/lib/postgresql/data
               # Folder on volume which should contain data (PostgreSQL specific)
               subPath: postgres
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PG_PASS

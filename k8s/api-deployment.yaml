@@ -19,3 +19,25 @@ spec:
           image: kukurammus/mlt-api
           ports:
             - containerPort: 5000
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: "6379"
+            - name: PG_HOST
+              value: postgres-cluster-ip-service
+            - name: PG_PORT
+              value: "5432"
+            - name: PG_USER
+              value: postgres
+            - name: PG_DBNAME
+              value: postgres
+
+              # Get variable value from secret
+            - name: PG_PASS
+              valueFrom:
+                secretKeyRef:
+                  # Specify secret object name
+                  name: pgpassword
+                  # Specify key inside this secret object
+                  key: PG_PASS
