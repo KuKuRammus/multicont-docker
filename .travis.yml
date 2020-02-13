@@ -19,15 +19,15 @@ after_success:
   - docker push kukurammus/mlt-nginx
   - docker push kukurammus/mlt-worker
 
-deploy:
-  provider: elasticbeanstalk
-  region: eu-central-1
-  app: multicont-docker
-  env: MulticontDocker-env
-  bucket_name: elasticbeanstalk-eu-central-1-220436342207
-  bucket_path: multicont-docker
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+# deploy:
+#  provider: elasticbeanstalk
+#  region: eu-central-1
+#  app: multicont-docker
+#  env: MulticontDocker-env
+#  bucket_name: elasticbeanstalk-eu-central-1-220436342207
+#  bucket_path: multicont-docker
+#  on:
+#    branch: master
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key:
+#    secure: "$AWS_SECRET_KEY"
