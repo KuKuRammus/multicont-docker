@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: client-cluster-ip-service
+spec:
+  # Sub type
+  type: ClusterIP
+  
+  # Apply via selector
+  selector:
+    # Apply only to objects, who has label "component": "web"
+    component: web
+
+  # Define port forwarding
+  ports:
+      # Public (inside node) port
+    - port: 3000
+      # Target port
+      targetPort: 3000
